@@ -29,7 +29,7 @@ class DateItem extends StatefulWidget {
   final Alignment? decorationAlignment;
 
   /// Specify a shape
-  final ShapeBorder? dayShapeBorder;
+  final OutlinedBorder? dayShapeBorder;
 
   /// [Callback] function for press event
   final void Function(DateTime)? onDatePressed;
@@ -106,11 +106,13 @@ class __DateItemState extends State<DateItem> {
         alignment: FractionalOffset.center,
         child: GestureDetector(
           onLongPress: _onLongPressed,
-          child: FlatButton(
-              padding: EdgeInsets.all(5),
+          child: TextButton(
+              style: TextButton.styleFrom(
+                padding: EdgeInsets.all(5),
+                backgroundColor: _defaultBackgroundColor!,
+                shape: widget.dayShapeBorder!,
+              ),
               onPressed: _onPressed,
-              color: _defaultBackgroundColor!,
-              shape: widget.dayShapeBorder!,
               child: Stack(
                 children: <Widget>[
                   Positioned(
